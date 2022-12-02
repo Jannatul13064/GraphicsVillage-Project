@@ -551,21 +551,35 @@ void ground()
   glVertex2f(0.5f, -1.0);
   glEnd();
 
-  // glBegin(GL_POLYGON);
-  // glColor3ub(1, 1, 1);
-  // glVertex2f(1.0f, 0.45f);
-  // glVertex2f(0.98f, 0.5f);
-  // glVertex2f(0.93f, 0.56);
-  // glVertex2f(0.9f, 0.6f);
-  // glVertex2f(0.82f, 0.64);
-  // glVertex2f(0.75f, 0.67);///
-  // glVertex2f(0.68f, 0.64);
-  // glVertex2f(0.6f, 0.6f);
-  // glVertex2f(0.57f, 0.56);
-  // glVertex2f(0.52f, 0.5f);
-  // glVertex2f(0.5f, 0.45f);
-  // glVertex2f(1.0f, 0.45f);
-  // glEnd();
+  glBegin(GL_POLYGON);
+  glColor3ub(102, 0, 0);
+  glVertex2f(0.3f, -0.60f);
+  glVertex2f(0.12f, -0.35);
+  glVertex2f(0.0f, -0.35);
+  glVertex2f(0.17f, -0.60f);
+
+
+  glEnd();
+
+  glBegin(GL_LINES);
+  glVertex2f(0.0f, -0.35);
+  glVertex2f(0.0f, -0.45);
+  glEnd();
+
+  glBegin(GL_LINES);
+  glVertex2f(0.12f, -0.35);
+  glVertex2f(0.12f, -0.45);
+  glEnd();
+
+  glBegin(GL_LINES);
+  glVertex2f(0.3f, -0.60f);
+  glVertex2f(0.3f, -0.70f);
+  glEnd();
+
+  glBegin(GL_LINES);
+  glVertex2f(0.17f, -0.60f);
+  glVertex2f(0.17f, -0.70f);
+  glEnd();
 
 }
 void river()
@@ -1366,6 +1380,7 @@ void init(void)
   glEnable(GL_LIGHT0);
 
 }
+
 void handleKeypress(unsigned char key, int x, int y) {
   switch (key) {
   case  'd':
@@ -1392,6 +1407,9 @@ void handleKeypress(unsigned char key, int x, int y) {
     break;
   }
 }
+
+
+
 
 int main(int argc, char** argv)
 {

@@ -7,17 +7,11 @@
 #include <GL/gl.h>
 #include <GL/glut.h>
 #include<MMSystem.h>
-void PointLight(const float x, const float y, const float z, const float amb, const float diff, const float spec)
-{
-  glEnable(GL_LIGHTING);
-  GLfloat light_ambient[] = { amb,amb,amb, 1.0 };
-  GLfloat light_position[] = { -0.9,.9,0, 0.0 };
-  glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
-  glLightfv(GL_LIGHT0, GL_POSITION, light_position);
-  glEnable(GL_LIGHT0);
-}
+
+//Translation of Birds
 GLfloat position22 = 0.0f;
 GLfloat speed22 = 0.007f;
+
 void birdd(int value) {
   if (position22 > 1.0)
     position22 = -1.0f;
@@ -25,18 +19,6 @@ void birdd(int value) {
   glutPostRedisplay();
   glutTimerFunc(100, birdd, 0);
 }
-GLfloat position4 = 0.0f;
-GLfloat speed4 = -0.01f;
-void sunn(int value)
-{
-  if (position4 > 1.0)
-    position4 = 0.0f;
-  position4 += speed4;
-  glutPostRedisplay();
-  glutTimerFunc(100, sunn, 0);
-}
-GLfloat position3 = 0.0f;
-GLfloat speed3 = -0.5f;
 
 GLfloat position2 = 0.0f;
 GLfloat speed2 = 0.004f;
@@ -120,13 +102,10 @@ void cloud1()
     );
   }
   glEnd();
-
-
 }
 
 void cloud2()
 {
-  // glLoadIdentity();
   int i;
 
   GLfloat x = -.5f; GLfloat y = .86f; GLfloat radius = .05f;
@@ -281,7 +260,7 @@ void sky()
   glEnd();
 }
 
-void backgroundtree()
+void hills()
 {
   glBegin(GL_POLYGON);
   glColor3ub(34, 139, 34);
@@ -1253,7 +1232,7 @@ void display2()
   glEnable(GL_DEPTH_TEST);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  PointLight(0, 0, 1, 0, 1, 1);
+
 
   glLoadIdentity();
   glutSwapBuffers();
@@ -1275,28 +1254,23 @@ void display1(void)
   glLoadIdentity();
   glLineWidth(2);
   sky();
-  cloud1();
-  cloud2();
-  cloud3();
-  backgroundtree();
+  hills();
   river();
   ground();
-  // grass1();
-  // grass2();
-  // grass3();
+
   way();
   boat2();
-  // fence();
+
   tree();
   well();
-  // Straw();
+
   hut();
   glOrtho(-50, 50, -50, 50, -1, 1);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
-  // draw
+
   glPushMatrix();
-  glTranslatef(0.0f, position3, 0.0f);
+
   glColor3ub(255, 255, 255);
   glEnableClientState(GL_VERTEX_ARRAY);
   glEnableClientState(GL_COLOR_ARRAY);
@@ -1328,19 +1302,17 @@ void display() {
   glTranslatef(position22, 0.0f, 0.0f);
   bird();
   glPopMatrix();
-  backgroundtree();
+  hills();
   river();
   glPushMatrix();
   glTranslatef(position1, 0.0f, 0.0f);
 
   glPopMatrix();
   ground();
-  // grass1();
-  // grass2();
-  // grass3();
+
   way();
   boat2();
-  // Straw();
+
   well();
 
   tree();
@@ -1407,9 +1379,6 @@ void handleKeypress(unsigned char key, int x, int y) {
     break;
   }
 }
-
-
-
 
 int main(int argc, char** argv)
 {
